@@ -1,0 +1,88 @@
+
+/* General */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body, .all-contain {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    background-color: #8d8383;
+}
+.dflex {
+    display: flex;
+}
+.normal-padding {
+    padding: 15px 20px;
+}
+.dflex-gap {
+    display: flex;
+    gap: 15px;
+}
+.dflex-between {
+    display: flex;
+    justify-content: space-between;
+}
+.dflex-column-between {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.dflex-column-between-gap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 25px;
+}
+nav.side-menu {
+    flex: 1;
+}
+main.dashboard-section {
+    flex: 10;
+}
+.side-menu, main.dashboard-section {
+    padding: 10px;
+}
+/* .main-bottom {
+    display
+} */
+/* .outline {
+    border: 1px solid red;
+} */
+.w-100 {
+    width: 100%;
+}
+.main-right-div, .main-left-div {
+    flex: 1;
+}
+.main-right-div {
+    gap: 15px;
+}
+.top-right-div, .bottom-right-div, .bottom-left-div {
+    border: 1px solid grey;
+    border-radius: 15px;
+}
+.chart-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.see-all, .green-color {
+    color: green; /* to be modified to var */
+}
+.orders-table, .chart {
+    background-color: #FFF;
+    height: 400px;
+}
+.bottom-left-div {
+    background-color: #fff;
+}
+.analytics-box, .top-right-div, .bottom-right-div {
+    border-radius: 15px;
+    background-color: #FFF;
+    padding: 10px
+}
+.analytics {
+    background-color: lemon;
+}
