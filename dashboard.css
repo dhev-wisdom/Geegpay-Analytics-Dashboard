@@ -1,3 +1,20 @@
+:root {
+    --green: rgb(90, 203, 165);
+    --light-green: rgb(235, 250, 246);
+    --grey: rgb(178, 171, 171);
+    --background-green: rgb(237, 246, 222);
+    --color-green: rgb(163, 221, 171);
+    --background-red: rgb(253, 241, 240);
+    --color-red: rgb(240, 111, 106);
+    --range-purple: rgb(99, 103, 220);
+    --range-powderblue: rgb(84, 197, 235);
+    --range-yellow: rgb(251, 182, 73);
+    --range-red: rgb(240, 89, 101);
+    --light-color-red: rgb(243, 137, 133);
+    --background-grey: rgb(250, 250, 250);
+    --color-grey: rgb(201, 200, 206);
+    --light-color-grey: rgb(224, 224, 224);
+}
 
 /* General */
 * {
@@ -37,10 +54,10 @@ body, .all-contain {
     gap: 25px;
 }
 nav.side-menu {
-    flex: 1;
+    width: 5%;
 }
 main.dashboard-section {
-    flex: 10;
+    width: 95%;
 }
 .side-menu, main.dashboard-section {
     padding: 10px;
