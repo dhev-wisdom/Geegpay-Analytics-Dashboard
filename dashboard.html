@@ -23,6 +23,8 @@
                 <!-- <div class="dark-light-mode">
                     <img src="images/sun.png" class="mode" alt="">
                     <img src="images/moon.png" class="mode" alt="">
+                    <span class="material-symbols-outlined">light_mode</span>
+                    <span class="material-symbols-outlined">dark_mode</span>
                     <i class="bi bi-sun-fill"></i>
                     <i class="bi bi-moon-fill"></i>
                 </div> -->
@@ -38,38 +40,38 @@
                 <div class="dashboard-head-div dflex-between-center">
                     <h1 class="head-1">Dashboard</h1>
                     <div class="search-div">
-                        <i class="bi bi-search">s</i>
-                        <input type="search" name="search" id="main-search">
+                        <input type="search" name="search" id="main-search" placeholder="Search">
+                        <span class="material-symbols-outlined search-icon">search</span>
                     </div>
                 </div>
                 <div class="date-div dflex-between-center">
                     <div class="date-start-div dflex-between">
-                        <p class=""><img src="images/date.png" class="inline" alt=""> November 13, 2023</p>
-                        <img src="images/bell_icon.png" alt="">
+                        <p class="vy"><span class="material-symbols-outlined vy">calendar_month</span> November 13, 2023</p>
+                        <!-- <img src="images/bell_icon.png" class="reduced" alt=""> -->
+                        <span class="material-symbols-outlined vy">notifications</span>
                     </div>
                     <div class="date-end-div dflex-between-center">
-                        <!-- <img src="" alt="dp" class="profile-img"> -->
-                        <span>🙂</span>
+                        <img src="images/dp.png" class="reduced me-1" alt="dp">
                         <div class="name-email">
                             <p class="name mb-0">Justin Bergson</p>
-                            <small class="email">justine@gmail.com</small>
+                            <small class="email mt-0">justine@gmail.com</small>
                         </div>
-                        <span>🔽</span>
+                        <span class="material-symbols-outlined">expand_more</span>
                     </div>
                 </div>
             </section>
             <section class="main-bottom dflex-gap outline">
                 <div class="main-right-div">
                     <div class="top-right-div mb-2_">
-                        <div class="chart-header dflex-between">
+                        <div class="chart-header dflex-between-center">
                             <h2 class="head-2">Sales Trend</h2>
                             <div>
                                 <p class="short-by inline">Short by: </p>
-                                <div class="weekly inline">Weekly <span>🔽</span></div>
+                                <div class="weekly inline">Weekly <span class="material-symbols-outlined vy">expand_more</span></div>
                             </div>
                         </div>
-                        <div style="width: fit-content;">
-                            <!-- <canvas id="myChart1"></canvas> -->
+                        <div>
+                            <canvas id="myChart"></canvas>
                             <!-- <img src="images/chart-block.png" style="width: fit-content;" alt=""> -->
                         </div>
                     </div>
@@ -95,35 +97,36 @@
                                         <td class="grey">Nov. 15, 2023</td>
                                         <td class="purple">$80,0000</td>
                                         <td class="green">Paid</td>
-                                        <td><span class="">🙂 </span> View</td>
+                                        <!-- <td><img src="images/view.png" class="reduced inline" alt=""> View</td> -->
+                                        <td><span class="material-symbols-outlined vy">download</span> View</td>
                                     </tr>
                                     <tr>
                                         <td><img src="images/Jaydon_dp.png" class="inline reduced" alt=""> Jaydon Vaccaro</td>
                                         <td class="grey">Nov. 15, 2023</td>
                                         <td class="purple">$150,0000</td>
                                         <td class="red">Refund</td>
-                                        <td><span class="">🙂 </span> View</td>
+                                        <td><span class="material-symbols-outlined vy">download</span> View</td>
                                     </tr>
                                     <tr>
                                         <td><img src="images/Corey_dp.png" class="inline reduced" alt=""> Corey Schieifer</td>
                                         <td class="grey">Nov. 14, 2023</td>
                                         <td class="purple">$87,0000</td>
                                         <td class="green">Paid</td>
-                                        <td><span class="">🙂 </span> View</td>
+                                        <td><span class="material-symbols-outlined vy">download</span> View</td>
                                     </tr>
                                     <tr>
                                         <td><img src="images/Cooper_dp.png" class="inline reduced" alt=""> Cooper Press</td>
                                         <td class="grey">Nov. 14, 2023</td>
                                         <td class="purple">$100,0000</td>
                                         <td class="red">Refund</td>
-                                        <td><span class="">🙂 </span> View</td>
+                                        <td><span class="material-symbols-outlined vy">download</span> View</td>
                                     </tr>
                                     <tr>
                                         <td><img src="images/Philip_dp.png" class="inline reduced" alt=""> Philip Lubin</td>
                                         <td class="grey">Nov. 13, 2023</td>
                                         <td class="purple">$78,0000</td>
                                         <td class="green">Paid</td>
-                                        <td><span class="">🙂 </span> View</td>
+                                        <td><span class="material-symbols-outlined vy">download</span> View</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -136,7 +139,7 @@
                             <div class="analytics-box">
                                 <div class="top-icons dflex-between-center mb-2">
                                     <img src="images/side_graph_1.png" class="inline reduced" alt="">
-                                    <img src="images/green_graph.png" class="inline reduced" alt="">
+                                    <img src="images/green_graph.png" class="inline graph-reduced" alt="">
                                 </div>
                                 <p class="total-order-text mb-0">Total Order</p>
                                 <h3 class="total-order-amount head-1 mb-2">350</h3>
@@ -148,12 +151,12 @@
                             <div class="analytics-box">
                                 <div class="top-icons dflex-between-center mb-2">
                                     <img src="images/side_graph_2.png" class="inline reduced" alt="">
-                                    <img src="images/red_graph.png" class="inline reduced" alt="">
+                                    <img src="images/red_graph.png" class="inline graph-reduced" alt="">
                                 </div>
                                 <p class="total-order-text mb-0">Total Order</p>
                                 <h3 class="total-order-amount head-1 mb-2">350</h3>
                                 <div class="bottom-icons dflex-between-center">
-                                    <span class="red-div"> 23.5%</span>
+                                    <span class="green-div"> 23.5%</span>
                                     <span class="grey-600">vs. previous month</span>
                                 </div>
                             </div>
@@ -162,19 +165,19 @@
                             <div class="analytics-box">
                                 <div class="top-icons dflex-between-center mb-2">
                                     <img src="images/side_graph_3.png" class="inline reduced" alt="">
-                                    <img src="images/red_graph.png" class="inline reduced" alt="">
+                                    <img src="images/red_graph.png" class="inline graph-reduced" alt="">
                                 </div>
                                 <p class="total-order-text mb-0">Total Order</p>
                                 <h3 class="total-order-amount head-1 mb-2">350</h3>
                                 <div class="bottom-icons dflex-between-center">
-                                    <span class="red-div"> 23.5%</span>
+                                    <span class="green-div"> 23.5%</span>
                                     <span class="grey-600">vs. previous month</span>
                                 </div>
                             </div>
                             <div class="analytics-box">
                                 <div class="top-icons dflex-between-center mb-2">
                                     <img src="images/side_graph_4.png" class="inline reduced" alt="">
-                                    <img src="images/green_graph.png" class="inline reduced" alt="">
+                                    <img src="images/green_graph.png" class="inline graph-reduced" alt="">
                                 </div>
                                 <p class="total-order-text mb-0">Total Order</p>
                                 <h3 class="total-order-amount head-1 mb-2">350</h3>

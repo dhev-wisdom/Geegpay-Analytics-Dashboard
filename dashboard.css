@@ -1,5 +1,5 @@
 :root {
-    --green: rgb(90, 203, 165);
+    --green: rgb(91, 206, 170);
     --light-green: rgb(235, 250, 246);
     --grey: rgb(178, 171, 171);
     --background-green: rgb(237, 246, 222);
@@ -30,9 +30,9 @@
     color: var(--green);
 }
 .green-div, .red-div {
-    padding: 2px 5px;
+    padding: 2px 10px;
     border-radius: 50px;
-    font-weight: 600;
+    font-weight: 500;
 }
 .green-div {
     background-color: var(--background-green);
@@ -122,7 +122,10 @@ body, .all-contain {
     display: inline;
 }
 .reduced {
-    width: 20px;
+    width: 2rem;
+}
+.graph-reduced {
+    width: 4rem;
 }
 .block {
     display: block;
@@ -179,7 +182,7 @@ main.dashboard-section {
     width: 100%;
 }
 .top-right-div, .bottom-right-div, .bottom-left-div {
-    border: 1px solid grey;
+    border: 1px solid var(--light-color-grey);
     border-radius: 15px;
 }
 .chart-header {
@@ -222,6 +225,7 @@ table {
 th, td {
     padding-top: 12px;
     padding-bottom: 12px;
+    font-size: 14px;
 }
 tr {
     border-bottom: 1px solid var(--grey);
@@ -249,3 +253,35 @@ tr:last-of-type {
 /* img.nav-icons {
     width: 80%;
 } */
+
+.search-div {
+    position: relative;
+    width: 300px;
+    color: var(--color-grey);
+    background-color: #fff;
+    border: 1px solid var(--light-color-grey);
+    border-radius: 100px;
+}
+#main-search {
+    padding: 5px 5px 5px 40px;
+    border: none;
+    width: 100%;
+}
+#main-search:focus {
+    border: none;
+}
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+}
+.vy {
+    vertical-align: middle;
+}
+.vyb {
+    vertical-align: bottom;
+}
+.vyt {
+    vertical-align: top;
+}
