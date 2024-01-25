@@ -21,7 +21,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Inter, sans-serif;
+    font-family: 'Open sans', sans-serif;
 }
 .red {
     color: var(--color-red);
@@ -61,6 +61,12 @@ body, .all-contain {
     display: flex;
     background-color: var(--background-grey);
 }
+hr {
+    border: 1px solid var(--color-grey);
+    border-radius: 5px;
+    /* color: var(--color-grey); */
+    margin: 20px 0;
+}
 .head-1, .head-2, .head-3 {
     font-weight: 600;
 }
@@ -71,6 +77,9 @@ body, .all-contain {
     font-size: 16px;
 }
 .head-3 {
+    font-size: 14px;
+}
+p, .weekly {
     font-size: 14px;
 }
 .dflex {
@@ -125,7 +134,7 @@ body, .all-contain {
     width: 2rem;
 }
 .graph-reduced {
-    width: 4rem;
+    width: 6rem;
 }
 .block {
     display: block;
@@ -203,7 +212,7 @@ main.dashboard-section {
 .bottom-left-div {
     background-color: #fff;
 }
-.analytics-box, .top-right-div, .bottom-right-div {
+.top-right-div, .bottom-right-div {
     border-radius: 15px;
     background-color: #FFF;
     padding: 20px
@@ -211,6 +220,9 @@ main.dashboard-section {
 .analytics-box {
     flex: 1;
     margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #FFF;
+    padding: 15px;
 }
 .analytics {
     background-color: lemon;
@@ -238,17 +250,17 @@ tr:last-of-type {
     font-weight: 600;
     font-size: 15px;
 }
-#book-range::-webkit-slider-thumb {
+input.book-range::-webkit-slider-thumb {
     background-color: var(--range-purple);
 }
-#artisan-range::-webkit-slider-thumb {
+#artisan-range::-ms-thumb {
     background-color: var(--range-powderblue);
 }
-#toy-range::-webkit-slider-thumb {
+#toy-range::-moz-range-thumb {
     background-color: var(--range-yellow);
 }
-#xstore-range::-webkit-slider-thumb {
-    background-color: var(--range-red);
+#xstore-range::-webkit-slider-runnable-track {
+    color: var(--range-red);
 }
 /* img.nav-icons {
     width: 80%;
@@ -260,7 +272,7 @@ tr:last-of-type {
     color: var(--color-grey);
     background-color: #fff;
     border: 1px solid var(--light-color-grey);
-    border-radius: 100px;
+    /* border-radius: 100px; */
 }
 #main-search {
     padding: 5px 5px 5px 40px;
