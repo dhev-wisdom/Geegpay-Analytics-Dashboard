@@ -21,7 +21,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 .red {
     color: var(--color-red);
@@ -59,7 +59,7 @@
     font-size: 12px;
 }
 .small-img {
-    font-size: 8.5px;
+    font-size: 10px;
 }
 body, .all-contain {
     width: 100vw;
@@ -102,7 +102,7 @@ p {
     /* padding: 2px 4px 1px; */
     border-radius: 50%;
 }
-.dflex-gap {
+.dflex-gap, .main-bottom {
     display: flex;
     gap: 15px;
 }
@@ -251,8 +251,8 @@ th, td {
     padding-bottom: 12px;
     font-size: 14px;
 }
-tr {
-    border-bottom: 1px solid var(--grey);
+tr,  thead tr {
+    border-bottom: 1px solid var(--background-grey);
 }
 tr:last-of-type {
     border-bottom: none;
@@ -313,6 +313,38 @@ input.book-range::-webkit-slider-thumb {
     border-radius: 50%;
     padding: 5px;
 }
-.circular:hover {
+.circular:hover, span.material-symbols-outlined {
     cursor: hover;
+}
+
+@media (max-width: 1199px) {
+    .side-menu, .main-top {
+        display: none;
+    }
+    .main-bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 15px
+    }
+    main.dashboard-section {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    body {
+        padding: 50px 30px;
+    }
+}
+
+@media (min-width: 599px) and (max-width: 767px) {
+    body {
+        padding: 25px 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 25px 8px;
+    }
 }
