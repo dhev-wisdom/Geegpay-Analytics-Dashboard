@@ -3,6 +3,8 @@ const darkModeBtn = document.getElementById("dark-mode");
 const lightModeBtn = document.getElementById("light-mode");
 const all = document.getElementById("all-contain");
 const nav = document.getElementById("nav");
+const bell = document.getElementById("notification");
+const search = document.getElementById("search-icon");
 const hamburger = document.getElementById("hamburger");
 const mainSearch = document.getElementById("main-search");
 const redDiv = document.querySelectorAll(".red-div");
@@ -70,12 +72,18 @@ hamburger.addEventListener("click", () => {
     }
 });
 
+const amount = [7, 21, 3.6, 28, 9, 45,
+    9.1, 18, 35, 4.5, 30, 24];
+
 darkModeBtn.addEventListener("click", () => {
-    console.log("darkmode btn clicked");
     sessionStorage.setItem("darkOrLightMode", "dark");
+    isDark = true;
+    // displayMainGraph(amount);
     all.classList.add("dark-background");
     bodyEl.classList.add("dark-background");
     nav.classList.add("theme-light-background");
+    bell.classList.add("white");
+    search.classList.add("white");
     ordersTable.forEach(element => element.classList.add("theme-dark-background"));
     analytics.forEach(element => element.classList.add("theme-dark-background"));
     analyticsBox.forEach(element => element.classList.add("theme-dark-background"));
@@ -101,9 +109,14 @@ darkModeBtn.addEventListener("click", () => {
     lightModeBtn.classList.remove("active-mode");
     all.classList.add("white");
     invoiceClose.classList.add("white");
+    darkModeBtn.classList.remove("white");
+    darkModeBtn.classList.add("black");
+    mainSearch.classList.add("white");
 });
 lightModeBtn.addEventListener("click", () => {
     sessionStorage.setItem("darkOrLightMode", "light");
+    isDark = false;
+    // displayMainGraph(amount);
     bodyEl.classList.add("light-background");
     all.classList.add("light-background");
     ordersTable.forEach(element => element.classList.add("white-background"))
@@ -133,9 +146,17 @@ lightModeBtn.addEventListener("click", () => {
     all.classList.remove("white");
     nav.classList.remove("theme-light-background");
     invoiceClose.classList.remove("white");
+    darkModeBtn.classList.remove("white");
+    darkModeBtn.classList.add("black");
+    mainSearch.classList.remove("white");
+    bell.classList.remove("white");
+    search.classList.remove("white");
 });
 
-if (sessionStorage.getItem("darkOrLightMode").trim() == "dark") {
+const dark_ = sessionStorage.getItem("darkOrLightMode");
+let isDark = false;
+if (dark_) isDark = true;
+if (dark_ == "dark") {
     console.log("Check: ", sessionStorage.getItem("darkOrLightMode"));
     const clickEvent = new Event("click");
     darkModeBtn.dispatchEvent(clickEvent);
@@ -160,8 +181,6 @@ const monthNames = [
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
 ];
 
-const amount = [7000, 21000, 3600, 28000, 9000, 45000,
-9100, 18000, 35000, 4500, 30000, 24000];
 displayMainGraph(amount);
      
 function displayMainGraph(amounts) {
@@ -175,18 +194,46 @@ function displayMainGraph(amounts) {
             borderWidth: 1,
             borderRadius: 50,
             backgroundColor: "rgb(235, 250, 246)",
-            // hoverBackgroundColor: "linear-gradient(to top, rgb(235, 250, 246), rgb(91, 206, 170))",
-            hoverBackgroundColor: "rgb(91, 206, 170)",
-
+            // hoverBackgroundColor: "rgb(91, 206, 170)",
+            hoverBackgroundColor: (context) => {
+                const gradient = context.chart.ctx.createLinearGradient(0, 0, 0, context.chart.height);
+                gradient.addColorStop(0, 'rgb(5, 128, 89)');
+                gradient.addColorStop(0, 'rgb(5, 128, 89)');
+                gradient.addColorStop(0, 'rgb(5, 128, 89)');
+                gradient.addColorStop(0, 'rgb(5, 128, 89)');
+                gradient.addColorStop(1, 'rgb(255, 255, 255)');
+                return gradient;
+            },
         }]
         },
         options: {
-        scales: {
-            y: {
-            beginAtZero: true,
-            suggestedMax: 50000,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    suggestedMax: 50,
+                    ticks: {
+                        color: isDark ? "rgb(91, 206, 170)" : "rgb(148, 148, 148)" ,
+                        callback: function (value, index, values) {
+                            return "$" + value.toFixed(3);
+                        }
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: isDark ? "rgb(91, 206, 170)" : "rgb(148, 148, 148)",
+                    }
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: (context) => {
+                            const value = context.parsed.y.toFixed(3);
+                            return "$" + value;
+                        }
+                    }
+                }
             }
-        }
         }
     });
 }
