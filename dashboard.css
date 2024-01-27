@@ -440,8 +440,17 @@ input[type="range"]#xstore-range {
 }
 
 @media (max-width: 999px) {
+    body {
+        padding: 0;
+    }
     .search-div, .date-div {
         display: none;
+    }
+    .main-right-div {
+        margin-bottom: 15px;
+    }
+    .bottom-right-div {
+        margin-bottom: 0;
     }
     nav.side-menu {
         position: absolute;
@@ -464,6 +473,9 @@ input[type="range"]#xstore-range {
         font-size: 20px;
         padding: 5px;
     }
+    main.dashboard-section {
+        width: 100%;
+    }
     nav.side-menu.shownav {
         transform: translateX(120%);
     }
@@ -483,15 +495,12 @@ input[type="range"]#xstore-range {
     }
     #myChart {
         min-height: 300px;
-        min-width: 60px;
+        min-width: 700px;
     }
     .main-bottom {
         display: flex;
         flex-direction: column;
         gap: 15px
-    }
-    main.dashboard-section {
-        width: 100%;
     }
     .main-right-div, .dashboard-head-div, .date-div, .main-left-div {
         flex: 1;
@@ -499,7 +508,7 @@ input[type="range"]#xstore-range {
 }
 
 @media (min-width: 768px) and (max-width: 999px) {
-    body {
+    .all-contain {
         padding: 25px 30px;
     }
 }
@@ -508,7 +517,7 @@ input[type="range"]#xstore-range {
     .analytics-flex {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 0;
     }
     .short-by {
         display: none;
@@ -516,13 +525,13 @@ input[type="range"]#xstore-range {
 }
 
 @media (min-width: 599px) and (max-width: 767px) {
-    body {
+    .all-contain {
         padding: 25px 10px;
     }
 }
 
 @media (max-width: 600px) {
-    body {
+    .all-contain {
         padding: 20px 8px;
     }
 }
