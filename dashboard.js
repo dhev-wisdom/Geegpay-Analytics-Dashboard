@@ -8,6 +8,9 @@ const search = document.getElementById("search-icon");
 const msgBody = document.getElementById("msg-body");
 const hamburger = document.getElementById("hamburger");
 const mainSearch = document.getElementById("main-search");
+const table = document.getElementById("table");
+const cells = table.querySelectorAll('th, td');
+const trs = table.querySelectorAll("tr");
 const redDiv = document.querySelectorAll(".red-div");
 const greenDiv = document.querySelectorAll(".green-div");
 const darkLightDiv = document.getElementById("dark-light-mode");
@@ -30,26 +33,12 @@ const bodyEl = document.body;
 
 function downloadInvoice(name, date, amount, status) {
     const content = `Invoice for ${name}\nDate: ${date}\nAmount: $${amount}\nStatus: ${status}`;
-
-    // Create a Blob containing the file content
     const blob = new Blob([content], { type: 'text/plain' });
-
-    // Create a link element
     const link = document.createElement('a');
-
-    // Set the download attribute with a desired filename
     link.download = `${name}_invoice.txt`;
-
-    // Create a URL for the Blob and set it as the href attribute
     link.href = window.URL.createObjectURL(blob);
-
-    // Append the link to the document
     document.body.appendChild(link);
-
-    // Trigger a click event on the link to start the download
     link.click();
-
-    // Remove the link from the document
     document.body.removeChild(link);
 }
 
@@ -66,7 +55,7 @@ downloadButtons.forEach((element) => {
         myModal.show();
         setTimeout(() => {
             myModal.hide();
-        }, 2500);
+        }, 3000);
     });
 });
 
@@ -89,22 +78,21 @@ viewButtons.forEach((element) => {
 });
 
 window.addEventListener("click", (event) => {
-    // Close nav menu if clicked outside
-    if (nav.classList.contains("shownav") && event.target !== hamburger) {
+    const isNavOrHamburger = nav.contains(event.target) || event.target === hamburger;
+    if (nav.classList.contains("shownav") && !isNavOrHamburger) {
         nav.classList.remove("shownav");
         hamburger.textContent = "menu";
     }
-
+    const isInvoiceFormOrViewButton = invoiceForm.contains(event.target) || Array.from(viewButtons).some(button => button.contains(event.target));
     if (
-        event.target !== invoiceForm &&
-        !invoiceOverlay.classList.contains("d-none_") &&
-        !Array.from(viewButtons).includes(event.target)
+        !isInvoiceFormOrViewButton &&
+        !invoiceOverlay.classList.contains("d-none_")
     ) {
         invoiceOverlay.classList.add("d-none_");
         invoiceOverlay.classList.remove("d-flex_");
     }
 });
-// Event listener for hamburger
+
 hamburger.addEventListener("click", () => {
     console.log("hamburger clicked");
     nav.classList.toggle("shownav");
@@ -115,16 +103,13 @@ hamburger.addEventListener("click", () => {
     }
 });
 
-const amount = [7, 21, 3.6, 28, 9, 45,
-    9.1, 18, 35, 4.5, 30, 24];
+const amount = [7, 21, 3.6, 28, 9, 45, 9.1, 18, 35, 4.5, 30, 24];
 
 darkModeBtn.addEventListener("click", () => {
     sessionStorage.setItem("darkOrLightMode", "dark");
-    isDark = true;
-    // displayMainGraph(amount);
     all.classList.add("dark-background");
+    nav.classList.add("dark-background");
     bodyEl.classList.add("dark-background");
-    nav.classList.add("theme-light-background");
     bell.classList.add("white");
     search.classList.add("white");
     ordersTable.forEach(element => element.classList.add("theme-dark-background"));
@@ -138,6 +123,7 @@ darkModeBtn.addEventListener("click", () => {
     darkLightDiv.classList.add("theme-dark-background");
     bodyEl.classList.remove("dark-background");
     all.classList.remove("light-background");
+    nav.classList.remove("light-background");
     ordersTable.forEach(element => element.classList.remove("white-background"))
     analytics.forEach(element => element.classList.remove("white-background"));
     analyticsBox.forEach(element => element.classList.remove("white-background"));
@@ -155,13 +141,14 @@ darkModeBtn.addEventListener("click", () => {
     darkModeBtn.classList.remove("white");
     darkModeBtn.classList.add("black");
     mainSearch.classList.add("white");
+    cells.forEach(cell => cell.classList.add('white'));
+    trs.forEach(tr => tr.classList.add('border-bottom-light'));
 });
 lightModeBtn.addEventListener("click", () => {
     sessionStorage.setItem("darkOrLightMode", "light");
-    isDark = false;
-    // displayMainGraph(amount);
     bodyEl.classList.add("light-background");
     all.classList.add("light-background");
+    nav.classList.add("light-background");
     ordersTable.forEach(element => element.classList.add("white-background"))
     analytics.forEach(element => element.classList.add("white-background"));
     analyticsBox.forEach(element => element.classList.add("white-background"));
@@ -174,6 +161,7 @@ lightModeBtn.addEventListener("click", () => {
     darkLightDiv.classList.add("white-background");
     bodyEl.classList.remove("dark-background");
     all.classList.remove("dark-background");
+    nav.classList.remove("dark-background");
     ordersTable.forEach(element => element.classList.remove("theme-dark-background"))
     analytics.forEach(element => element.classList.remove("theme-dark-background"));
     analyticsBox.forEach(element => element.classList.remove("theme-dark-background"));
@@ -187,25 +175,22 @@ lightModeBtn.addEventListener("click", () => {
     lightModeBtn.classList.add("active-mode");
     darkModeBtn.classList.remove("active-mode");
     all.classList.remove("white");
-    nav.classList.remove("theme-light-background");
     invoiceClose.classList.remove("white");
     darkModeBtn.classList.remove("white");
     darkModeBtn.classList.add("black");
     mainSearch.classList.remove("white");
     bell.classList.remove("white");
     search.classList.remove("white");
+    cells.forEach(cell => cell.classList.remove('white'));
+    trs.forEach(tr => tr.classList.remove('border-bottom-light'));
 });
 
 const dark_ = sessionStorage.getItem("darkOrLightMode");
-let isDark = false;
-if (dark_) isDark = true;
 if (dark_ == "dark") {
-    console.log("Check: ", sessionStorage.getItem("darkOrLightMode"));
     const clickEvent = new Event("click");
     darkModeBtn.dispatchEvent(clickEvent);
 }
 
-// Event listener for invoiceClose
 invoiceClose.addEventListener("click", () => {
     invoiceOverlay.classList.add("d-none_");
     invoiceOverlay.classList.remove("d-flex_");
@@ -237,7 +222,6 @@ function displayMainGraph(amounts) {
             borderWidth: 1,
             borderRadius: 50,
             backgroundColor: "rgb(235, 250, 246)",
-            // hoverBackgroundColor: "rgb(91, 206, 170)",
             hoverBackgroundColor: (context) => {
                 const gradient = context.chart.ctx.createLinearGradient(0, 0, 0, context.chart.height);
                 gradient.addColorStop(0, 'rgb(5, 128, 89)');
@@ -245,7 +229,7 @@ function displayMainGraph(amounts) {
                 gradient.addColorStop(0, 'rgb(5, 128, 89)');
                 gradient.addColorStop(0, 'rgb(9, 177, 124)');
                 gradient.addColorStop(0, 'rgb(9, 177, 124)');
-                gradient.addColorStop(1, 'rgb(255, 255, 255)');
+                gradient.addColorStop(1, 'rgb(235, 250, 246)');
                 return gradient;
             },
         }]
@@ -256,7 +240,7 @@ function displayMainGraph(amounts) {
                     beginAtZero: true,
                     suggestedMax: 50,
                     ticks: {
-                        color: isDark ? "rgb(91, 206, 170)" : "rgb(148, 148, 148)" ,
+                        color: "rgb(148, 148, 148)" ,
                         callback: function (value, index, values) {
                             return "$" + value.toFixed(3);
                         }
@@ -264,7 +248,7 @@ function displayMainGraph(amounts) {
                 },
                 x: {
                     ticks: {
-                        color: isDark ? "rgb(91, 206, 170)" : "rgb(148, 148, 148)",
+                        color: "rgb(148, 148, 148)",
                     }
                 }
             },
@@ -288,4 +272,3 @@ function hideLoadingOverlay() {
 setTimeout(() => {
     hideLoadingOverlay();
 }, 1000);
-// hideLoadingOverlay();
