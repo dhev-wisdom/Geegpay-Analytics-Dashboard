@@ -494,8 +494,8 @@ input[type="range"]#xstore-range {
         min-width: 700px;
     }
     #myChart {
-        min-height: 300px;
-        min-width: 700px;
+        min-height: auto;
+        min-width: auto;
     }
     .main-bottom {
         display: flex;
