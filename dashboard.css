@@ -113,7 +113,7 @@ hr {
     font-size: 16px;
 }
 .head-3 {
-    font-size: 14px;
+    font-size: 15px;
 }
 p {
     font-size: 14px;
@@ -328,25 +328,16 @@ tr:last-of-type {
 input[type="range"].book-range {
     accent-color: var(--range-purple);
 }
-/* input[type="range"]#artisan-range::-moz-range-thumb {
+/* input[type="range"].artisan-range::-moz-range-thumb {
     background-color: var(--range-powderblue);
 } */
-/* input[type="range"]#artisan-range::-webkit-slider-runnable-track {
-  background-color: white;
-} */
-input[type="range"]#artisan-range {
+input[type="range"].artisan-range {
     accent-color: var(--range-powderblue);
 }
-/* input[type="range"]#toy-range::-moz-range-thumb {
-    background-color: var(--range-yellow);
-} */
-input[type="range"]#toy-range {
+input[type="range"].toy-range {
     accent-color: var(--range-yellow);
 }
-/* input[type="range"]#xstore-range::-moz-range-thumb {
-    background-color: var(--range-red);
-} */
-input[type="range"]#xstore-range {
+input[type="range"].xstore-range {
     accent-color: var(--range-red);
 }
 /* img.nav-icons {
