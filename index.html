@@ -16,8 +16,8 @@
     <title>Analytics Dashboard</title>
 </head>
 <body>
-    <div class="all-contain outline">
-        <nav class="side-menu dflex-column-between py-2">
+    <div id="all-contain" class="all-contain">
+        <nav class="side-menu dflex-column-between py-2" id="nav">
             <nav class="side-menu-top dflex-column-between-gap">
                 <img src="images/power-active.png" class="nav-icons" alt="">
                 <img src="images/dashboard.png" class="nav-icons" alt="">
@@ -26,15 +26,12 @@
                 <img src="images/cube.png" class="nav-icons" alt="">
                 <img src="images/setting.png" class="nav-icons" alt="">
                 <img src="images/info.png" class="nav-icons" alt="">
-                <img src="images/sun-moon.png" class="nav-icons" alt="">
-                <!-- <div class="dark-light-mode">
-                    <img src="images/sun.png" class="mode" alt="">
-                    <img src="images/moon.png" class="mode" alt="">
-                    <span class="material-symbols-outlined">light_mode</span>
-                    <span class="material-symbols-outlined">dark_mode</span>
-                    <i class="bi bi-sun-fill"></i>
-                    <i class="bi bi-moon-fill"></i>
-                </div> -->
+                <!-- <img src="images/sun-moon.png" class="nav-icons" alt="" id="dark-mode"> -->
+                <div class="dark-light-mode">
+                    <span class="material-symbols-outlined active-mode white fw-bold" id="light-mode">light_mode</span>
+                    <!-- <i class="bi bi-sun-fill"></i> -->
+                    <span class="material-symbols-outlined inactive-mode" id=dark-mode>dark_mode</span>
+                </div>
             </nav>
             <nav class="side-menu-bottom dflex-column-between-gap">
                 <img src="images/login.png" class="nav-icons" alt="">
@@ -42,15 +39,16 @@
                 <img src="images/logout.png" class="nav-icons" alt="">
             </nav>
         </nav>
-        <main class="dashboard-section outline">
+        <main class="dashboard-section">
             <section class="main-top dflex-gap outline">
                 <div class="dashboard-head-div dflex-between-center">
-                    <h1 class="head-1">Dashboard</h1>
+                    <h1 class="head-1 dashboard-text">Dashboard</h1>
                     <div class="search-div">
                         <input type="search" name="search" id="main-search" placeholder="Search...">
                         <span class="material-symbols-outlined search-icon">search</span>
                     </div>
                 </div>
+                <span class="material-symbols-outlined hamburger" id="hamburger">menu</span>
                 <div class="date-div dflex-between-center vy">
                     <div class=""><span class="material-symbols-outlined vy me-2">calendar_month</span> November 13, 2023</div>
                     <span class="material-symbols-outlined circular vy grey">notifications</span>
@@ -86,7 +84,7 @@
                             <h2 class="head-2 see-all">See All</h2>
                         </div>
                         <div class="orders-table">
-                            <table>
+                            <table id="table">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
@@ -97,41 +95,60 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><img src="images/marcus_dp.png" class="inline reduced" alt=""> Marcus Bergson</td>
+                                    <tr data-name="Marcus Bergson" data-date="Nov. 15, 2023"
+                                        data-amount="$80,000" data-status="Paid">
+                                        <td><img src="images/marcus_dp.png" class="inline reduced me-1" alt=""> Marcus Bergson</td>
                                         <td class="grey">Nov. 15, 2023</td>
-                                        <td class="purple">$80,0000</td>
+                                        <td class="purple">$80,000</td>
                                         <td class="green">Paid</td>
-                                        <!-- <td><img src="images/view.png" class="reduced inline" alt=""> View</td> -->
-                                        <td><span class="material-symbols-outlined vy">download</span> View</td>
+                                        <td>
+                                            <span class="material-symbols-outlined downloadIcon vy">download</span> 
+                                            <span class="vy viewText">View</span>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td><img src="images/Jaydon_dp.png" class="inline reduced" alt=""> Jaydon Vaccaro</td>
+                                    <tr data-status="Refund" data-amount="$150,000"
+                                        data-date="Nov. 15, 2023" data-name="Jaydon Vaccaro">
+                                        <td><img src="images/Jaydon_dp.png" class="inline reduced me-1" alt=""> Jaydon Vaccaro</td>
                                         <td class="grey">Nov. 15, 2023</td>
-                                        <td class="purple">$150,0000</td>
+                                        <td class="purple">$150,000</td>
                                         <td class="red">Refund</td>
-                                        <td><span class="material-symbols-outlined vy">download</span> View</td>
+                                        <td>
+                                            <span class="material-symbols-outlined downloadIcon vy">download</span> 
+                                            <span class="vy viewText">View</span>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td><img src="images/Corey_dp.png" class="inline reduced" alt=""> Corey Schieifer</td>
+                                    <tr data-name="Corey Schieifer" data-date="Nov. 14, 2023"
+                                        data-amount="$87,000" data-status="Paid">
+                                        <td><img src="images/Corey_dp.png" class="inline reduced me-1" alt=""> Corey Schieifer</td>
                                         <td class="grey">Nov. 14, 2023</td>
-                                        <td class="purple">$87,0000</td>
+                                        <td class="purple">$87,000</td>
                                         <td class="green">Paid</td>
-                                        <td><span class="material-symbols-outlined vy">download</span> View</td>
+                                        <td>
+                                            <span class="material-symbols-outlined downloadIcon vy">download</span> 
+                                            <span class="vy viewText">View</span>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td><img src="images/Cooper_dp.png" class="inline reduced" alt=""> Cooper Press</td>
+                                    <tr data-name="Cooper Press" data-date="Nov. 14, 2023"
+                                        data-amount="$100,000" data-status="Refund">
+                                        <td><img src="images/Cooper_dp.png" class="inline reduced me-1" alt=""> Cooper Press</td>
                                         <td class="grey">Nov. 14, 2023</td>
-                                        <td class="purple">$100,0000</td>
+                                        <td class="purple">$100,000</td>
                                         <td class="red">Refund</td>
-                                        <td><span class="material-symbols-outlined vy">download</span> View</td>
+                                        <td>
+                                            <span class="material-symbols-outlined downloadIcon vy">download</span> 
+                                            <span class="vy viewText">View</span>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td><img src="images/Philip_dp.png" class="inline reduced" alt=""> Philip Lubin</td>
+                                    <tr data-name="Philip Lubin" data-date="Nov. 13, 2023"
+                                        data-amount="$78,000" data-status="Paid">
+                                        <td><img src="images/Philip_dp.png" class="inline reduced me-1" alt=""> Philip Lubin</td>
                                         <td class="grey">Nov. 13, 2023</td>
-                                        <td class="purple">$78,0000</td>
+                                        <td class="purple">$78,000</td>
                                         <td class="green">Paid</td>
-                                        <td><span class="material-symbols-outlined vy">download</span> View</td>
+                                        <td>
+                                            <span class="material-symbols-outlined downloadIcon vy">download</span> 
+                                            <span class="vy viewText">View</span>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -140,7 +157,7 @@
                 </div>
                 <div class="main-left-div outline">
                     <div class="top-left-div outline">
-                        <div class="dflex-gap">
+                        <div class="analytics-flex">
                             <div class="analytics-box">
                                 <div class="top-icons dflex-between-center mb-2">
                                     <img src="images/side_graph_1.png" class="inline reduced" alt="">
@@ -166,7 +183,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="dflex-gap outline">
+                        <div class="analytics-flex">
                             <div class="analytics-box">
                                 <div class="top-icons dflex-between-center mb-2">
                                     <img src="images/side_graph_3.png" class="inline reduced" alt="">
@@ -203,7 +220,7 @@
                                 <h3 class="top-platform-head head-2">Book Bazaar</h3>
                                 <input type="range" class="platform-range book-range w-100" min="0" max="5000000" value="2500000" name="bookRange" id="book-range">
                                 <div class="dflex-between-center">
-                                    <p class="platform-amount">$2,500,000</p>
+                                    <p class="platform-amount platform-amountt">$2,500,000</p>
                                     <p class="platform-amount">+15%</p>
                                 </div>
                             </div>
@@ -211,7 +228,7 @@
                                 <h3 class="top-platform-head head-2">Artisan Aisle</h3>
                                 <input type="range" class="platform-range w-100" min="0" max="5000000" value="1800000"  name="bookRange" id="artisan-range">
                                 <div class="dflex-between-center">
-                                    <p class="platform-amount">$1,800,000</p>
+                                    <p class="platform-amount platform-amountt">$1,800,000</p>
                                     <p class="platform-amount">+10%</p>
                                 </div>
                             </div>
@@ -219,7 +236,7 @@
                                 <h3 class="top-platform-head head-2">Toy Troop</h3>
                                 <input type="range" class="platform-range w-100" min="0" max="5000000" value="1200000" name="bookRange" id="toy-range">
                                 <div class="dflex-between-center">
-                                    <p class="platform-amount">$1,200,000</p>
+                                    <p class="platform-amount platform-amountt">$1,200,000</p>
                                     <p class="platform-amount">+5%</p>
                                 </div>
                             </div>
@@ -227,7 +244,7 @@
                                 <h3 class="top-platform-head head-2">XStore</h3>
                                 <input type="range" class="platform-range w-100" min="0" max="5000000" value="1200000" name="bookRange" id="xstore-range">
                                 <div class="dflex-between-center">
-                                    <p class="platform-amount">$1,200,000</p>
+                                    <p class="platform-amount platform-amountt">$1,200,000</p>
                                     <p class="platform-amount">+5%</p>
                                 </div>
                             </div>
@@ -237,9 +254,33 @@
             </section>
         </main>
     </div>
+
+    <div id="invoice-overlay">
+        <span class="material-symbols-outlined block" id="close-overlay">close</span>
+        <div class="form-div">
+            <form action="" id="invoice-form">
+                <div class="label-input-div">
+                    <label for="invoice-name">Name: </label>
+                    <input type="text" name="invoice-name" id="invoice-name" class="" value="Marcus Bergson" readonly>
+                </div>
+                <div class="label-input-div">
+                    <label for="invoice-date">Date: </label>
+                    <input type="text" name="invoice-date" id="invoice-date" value="Nov. 15, 2023" readonly>
+                </div>
+                <div class="label-input-div">
+                    <label for="invoice-name">Amount: </label>
+                    <input type="text" name="invoice-amount" id="invoice-amount" class="" value="$80,000" readonly>
+                </div>
+                <div class="label-input-div">
+                    <label for="invoice-status">Status: </label>
+                    <input type="text" name="invoice-status" id="invoice-status" class="" value="Paid" readonly>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 
-<script src="dashboard.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="dashboard.js"></script>
 </html>
