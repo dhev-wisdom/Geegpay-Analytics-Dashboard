@@ -43,24 +43,22 @@ viewButtons.forEach((element) => {
     });
 });
 
-// Event listener for invoiceClose
-invoiceClose.addEventListener("click", () => {
-    invoiceOverlay.classList.add("d-none_");
-    invoiceOverlay.classList.remove("d-flex_");
-});
-
-// Event listener for window (to close overlay on outside click)
 window.addEventListener("click", (event) => {
+    // Close nav menu if clicked outside
+    if (nav.classList.contains("shownav") && event.target !== hamburger) {
+        nav.classList.remove("shownav");
+        hamburger.textContent = "menu";
+    }
+
     if (
         event.target !== invoiceForm &&
         !invoiceOverlay.classList.contains("d-none_") &&
-        event.target !== viewButtons
+        !Array.from(viewButtons).includes(event.target)
     ) {
         invoiceOverlay.classList.add("d-none_");
         invoiceOverlay.classList.remove("d-flex_");
     }
 });
-
 // Event listener for hamburger
 hamburger.addEventListener("click", () => {
     console.log("hamburger clicked");
@@ -102,6 +100,7 @@ darkModeBtn.addEventListener("click", () => {
     darkModeBtn.classList.add("active-mode");
     lightModeBtn.classList.remove("active-mode");
     all.classList.add("white");
+    invoiceClose.classList.add("white");
 });
 lightModeBtn.addEventListener("click", () => {
     sessionStorage.setItem("darkOrLightMode", "light");
@@ -133,6 +132,7 @@ lightModeBtn.addEventListener("click", () => {
     darkModeBtn.classList.remove("active-mode");
     all.classList.remove("white");
     nav.classList.remove("theme-light-background");
+    invoiceClose.classList.remove("white");
 });
 
 if (sessionStorage.getItem("darkOrLightMode").trim() == "dark") {
@@ -140,6 +140,12 @@ if (sessionStorage.getItem("darkOrLightMode").trim() == "dark") {
     const clickEvent = new Event("click");
     darkModeBtn.dispatchEvent(clickEvent);
 }
+
+// Event listener for invoiceClose
+invoiceClose.addEventListener("click", () => {
+    invoiceOverlay.classList.add("d-none_");
+    invoiceOverlay.classList.remove("d-flex_");
+});
 
 platformRange.forEach((element, index) => {
     const amount = platformAmount[index];
