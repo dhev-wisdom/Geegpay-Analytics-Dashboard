@@ -31,7 +31,7 @@
                 <img src="images/setting.png" class="nav-icons" alt="">
                 <img src="images/info.png" class="nav-icons" alt="">
                 <!-- <img src="images/sun-moon.png" class="nav-icons" alt="" id="dark-mode"> -->
-                <div class="dark-light-mode">
+                <div class="dark-light-mode" id="dark-light-mode">
                     <span class="material-symbols-outlined active-mode white fw-bold" id="light-mode">light_mode</span>
                     <!-- <i class="bi bi-sun-fill"></i> -->
                     <span class="material-symbols-outlined inactive-mode" id=dark-mode>dark_mode</span>
@@ -79,7 +79,6 @@
                         </div>
                         <div class="chart-container">
                             <canvas id="myChart"></canvas>
-                            <!-- <img src="images/chart-block.png" style="width: fit-content;" alt=""> -->
                         </div>
                     </div>
                     <div class="bottom-right-div">
@@ -163,24 +162,24 @@
                     <div class="top-left-div outline">
                         <div class="analytics-flex">
                             <div class="analytics-box">
-                                <div class="top-icons dflex-between-center mb-2">
+                                <div class="top-icons dflex-between-center mb-3">
                                     <img src="images/side_graph_1.png" class="inline reduced" alt="">
                                     <img src="images/green_graph.png" class="inline graph-reduced" alt="">
                                 </div>
                                 <p class="total-order-text mb-0">Total Order</p>
-                                <h3 class="total-order-amount head-1 mb-2">350</h3>
+                                <h3 class="total-order-amount head-1 mb-3">350</h3>
                                 <div class="bottom-icons dflex-between-center">
                                     <span class="green-div"><span class="material-symbols-outlined small-img vy">trending_up</span>23.5%</span>
                                     <span class="grey-600">vs. previous month</span>
                                 </div>
                             </div>
                             <div class="analytics-box">
-                                <div class="top-icons dflex-between-center mb-2">
+                                <div class="top-icons dflex-between-center mb-3">
                                     <img src="images/side_graph_2.png" class="inline reduced" alt="">
                                     <img src="images/red_graph.png" class="inline graph-reduced" alt="">
                                 </div>
                                 <p class="total-order-text mb-0">Total Refund</p>
-                                <h3 class="total-order-amount head-1 mb-2">350</h3>
+                                <h3 class="total-order-amount head-1 mb-3">350</h3>
                                 <div class="bottom-icons dflex-between-center">
                                     <span class="red-div"><span class="material-symbols-outlined small-img vy">trending_down</span>23.5%</span>
                                     <span class="grey-600">vs. previous month</span>
@@ -189,24 +188,24 @@
                         </div>
                         <div class="analytics-flex">
                             <div class="analytics-box">
-                                <div class="top-icons dflex-between-center mb-2">
+                                <div class="top-icons dflex-between-center mb-3">
                                     <img src="images/side_graph_3.png" class="inline reduced" alt="">
                                     <img src="images/red_graph.png" class="inline graph-reduced" alt="">
                                 </div>
                                 <p class="total-order-text mb-0">Average Sales</p>
-                                <h3 class="total-order-amount head-1 mb-2">350</h3>
+                                <h3 class="total-order-amount head-1 mb-3">350</h3>
                                 <div class="bottom-icons dflex-between-center">
                                     <span class="red-div"><span class="material-symbols-outlined small-img vy">trending_down</span>23.5%</span>
                                     <span class="grey-600">vs. previous month</span>
                                 </div>
                             </div>
                             <div class="analytics-box">
-                                <div class="top-icons dflex-between-center mb-2">
+                                <div class="top-icons dflex-between-center mb-3">
                                     <img src="images/side_graph_4.png" class="inline reduced" alt="">
                                     <img src="images/green_graph.png" class="inline graph-reduced" alt="">
                                 </div>
                                 <p class="total-order-text mb-0">Total Income</p>
-                                <h3 class="total-order-amount head-1 mb-2">350</h3>
+                                <h3 class="total-order-amount head-1 mb-3">350</h3>
                                 <div class="bottom-icons dflex-between-center">
                                     <span class="green-div"><span class="material-symbols-outlined small-img vy">trending_up</span>23.5%</span>
                                     <span class="grey-600">vs. previous month</span>
@@ -214,7 +213,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="bottom-left-div normal-padding outline">
+                    <div class="bottom-left-div normal-padding outline" id="top-platform">
                         <div class="chart-header dflex-between-center">
                             <h2 class="head-2">Top Platform</h2>
                             <h2 class="see-all head-2">See All</h2>

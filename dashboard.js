@@ -7,13 +7,14 @@ const hamburger = document.getElementById("hamburger");
 const mainSearch = document.getElementById("main-search");
 const redDiv = document.querySelectorAll(".red-div");
 const greenDiv = document.querySelectorAll(".green-div");
-const darkLightDiv = document.getElementsByClassName("dark-light-mode");
+const darkLightDiv = document.getElementById("dark-light-mode");
 const ordersTable = document.querySelectorAll(".orders-table");
 const bottomLeftDiv = document.querySelectorAll(".bottom-left-div");
 const topRightDiv = document.querySelectorAll(".top-right-div");
 const bottomRightDiv = document.querySelectorAll(".bottom-right-div");
 const analyticsBox = document.querySelectorAll(".analytics-box");
 const analytics = document.querySelectorAll(".analytics");
+const topPlatform = document.getElementById("top-platform");
 const viewButtons = document.querySelectorAll(".viewText");
 const downloadButtons = document.querySelectorAll(".downloadIcon");
 const platformRange = document.querySelectorAll(".platform-range");
@@ -21,11 +22,12 @@ const platformAmount = document.querySelectorAll(".platform-amount.platform-amou
 const invoiceOverlay = document.getElementById("invoice-overlay");
 const invoiceForm = document.getElementById("invoice-form");
 const invoiceClose = document.getElementById("close-overlay");
-
+const ctx = document.getElementById('myChart');
 const bodyEl = document.body;
 
 viewButtons.forEach((element) => {
     element.addEventListener("click", () => {
+        console.log("view text click");
         const trElement = element.closest("tr");
         let name = trElement.dataset.name;
         let date = trElement.dataset.date;
@@ -47,7 +49,13 @@ viewButtons.forEach((element) => {
         if (event.target !== invoiceForm) {
             invoiceOverlay.style.display = "none";
         }
+        if (nav.classList.contains("shownav") && event.target !== hamburger) {
+            nav.classList.remove("shownav");
+            hamburger.textContent = "menu";
+        }
     });
+
+if (sessionStorage.getItem("darkOrLightMode") === "dark") darkModeBtn.click();
 
 
 hamburger.addEventListener("click", () => {
@@ -60,40 +68,67 @@ hamburger.addEventListener("click", () => {
     }
 });
 
-// darkModeBtn.addEventListener("click", () => {
-//     all.classList.add("dark-background");
-//     ordersTable.forEach.classList.add("theme-dark-background")
-//     analytics.forEach(element => element.classListadd=> element.classList.add("theme-dark-background"));
-//     bottomRightDiv.forEach.(element => elementclassList.add("theme-dark-background"));
-//     mainSearch.classList.add("theme-dark-background");
-//     all.classList.remove("light-background");
-//     ordersTable.forEach(element => element.classList.remove("white-background"))
-//     analytics.forEach(element => element.classList.remove("white-background"));
-//     bottomLeftDiv.forEach(element => element.classList.remove("white-background"));
-//     topRightDiv.forEach(element => element.classList.remove("white-background"));
-//     bottomRightDiv.forEach(element => element.classList.remove("white-background"));
-//     mainSearch.classList.remove("white-background");
-//     darkModeBtn.classList.add("active-mode");
-//     lightModeBtn.classList.remove("active-mode");
-// });
-// lightModeBtn.addEventListener("click", () => {
-//     all.classList.add("light-background");
-//     ordersTable.forEach(element => element.classList.add("white-background"))
-//     analytics.forEach(element => element.classList.add("white-background"));
-//     bottomLeftDiv.forEach(element => element.classList.add("white-background"));
-//     topRightDiv.forEach(element => element.classList.add("white-background"));
-//     bottomRightDiv.forEach(element => element.classList.add("white-background"));
-//     mainSearch.classList.add("white-background");
-//     all.classList.remove("dark-background");
-//     ordersTable.forEach(element => element.classList.remove("theme-dark-background"))
-//     analytics.forEach(element => element.classList.remove("theme-dark-background"));
-//     bottomLeftDiv.forEach(element => element.classList.remove("theme-dark-background"));
-//     topRightDiv.forEach(element => element.classList.remove("theme-dark-background"));
-//     bottomRightDiv.forEach(element => element.classList.remove("theme-dark-background"));
-//     mainSearch.classList.remove("theme-dark-background");
-//     lightModeBtn.classList.add("active-mode");
-//     darkModeBtn.classList.remove("active-mode");
-// });
+darkModeBtn.addEventListener("click", () => {
+    sessionStorage.setItem("darkOrLightMode", "dark");
+    all.classList.add("dark-background");
+    bodyEl.classList.add("dark-background");
+    nav.classList.add("theme-light-background");
+    ordersTable.forEach(element => element.classList.add("theme-dark-background"));
+    analytics.forEach(element => element.classList.add("theme-dark-background"));
+    analyticsBox.forEach(element => element.classList.add("theme-dark-background"));
+    topPlatform.classList.add("theme-dark-background");
+    bottomRightDiv.forEach(element => element.classList.add("theme-dark-background"));
+    topRightDiv.forEach(element => element.classList.add("theme-dark-background"));
+    mainSearch.classList.add("theme-dark-background");
+    ctx.classList.add("theme-dark-background");
+    darkLightDiv.classList.add("theme-dark-background");
+    bodyEl.classList.remove("dark-background");
+    all.classList.remove("light-background");
+    ordersTable.forEach(element => element.classList.remove("white-background"))
+    analytics.forEach(element => element.classList.remove("white-background"));
+    analyticsBox.forEach(element => element.classList.remove("white-background"));
+    bottomLeftDiv.forEach(element => element.classList.remove("white-background"));
+    topRightDiv.forEach(element => element.classList.remove("white-background"));
+    bottomRightDiv.forEach(element => element.classList.remove("white-background"));
+    mainSearch.classList.remove("white-background");
+    ctx.classList.remove("white-background");
+    topPlatform.classList.remove("white-background");
+    darkLightDiv.classList.remove("white-background");
+    darkModeBtn.classList.add("active-mode");
+    lightModeBtn.classList.remove("active-mode");
+    all.classList.add("white");
+});
+lightModeBtn.addEventListener("click", () => {
+    sessionStorage.setItem("darkOrLightMode", "light");
+    bodyEl.classList.add("light-background");
+    all.classList.add("light-background");
+    ordersTable.forEach(element => element.classList.add("white-background"))
+    analytics.forEach(element => element.classList.add("white-background"));
+    analyticsBox.forEach(element => element.classList.add("white-background"));
+    topPlatform.classList.add("white-background");
+    bottomLeftDiv.forEach(element => element.classList.add("white-background"));
+    topRightDiv.forEach(element => element.classList.add("white-background"));
+    bottomRightDiv.forEach(element => element.classList.add("white-background"));
+    mainSearch.classList.add("white-background");
+    ctx.classList.add("white-background");
+    darkLightDiv.classList.add("white-background");
+    bodyEl.classList.remove("dark-background");
+    all.classList.remove("dark-background");
+    ordersTable.forEach(element => element.classList.remove("theme-dark-background"))
+    analytics.forEach(element => element.classList.remove("theme-dark-background"));
+    analyticsBox.forEach(element => element.classList.remove("theme-dark-background"));
+    bottomLeftDiv.forEach(element => element.classList.remove("theme-dark-background"));
+    topRightDiv.forEach(element => element.classList.remove("theme-dark-background"));
+    bottomRightDiv.forEach(element => element.classList.remove("theme-dark-background"));
+    mainSearch.classList.remove("theme-dark-background");
+    ctx.classList.remove("theme-dark-background");
+    topPlatform.classList.remove("theme-dark-background");
+    darkLightDiv.classList.remove("theme-dark-background");
+    lightModeBtn.classList.add("active-mode");
+    darkModeBtn.classList.remove("active-mode");
+    all.classList.remove("white");
+    nav.classList.remove("theme-light-background");
+});
 
 platformRange.forEach((element, index) => {
     const amount = platformAmount[index];
@@ -103,7 +138,6 @@ platformRange.forEach((element, index) => {
     });
 });
 
-const ctx = document.getElementById('myChart');
 const monthNames = [
     "Jan", "Feb", "Mar", "Apr", "May", "Jun",
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -150,6 +184,7 @@ function displayMainGraph(amounts) {
 function hideLoadingOverlay() {
     document.getElementById('loadingOverlay').style.display = 'none';
 }
-setTimeout(() => {
-    hideLoadingOverlay();
-}, 1000);
+// setTimeout(() => {
+//     hideLoadingOverlay();
+// }, 1000);
+hideLoadingOverlay();
