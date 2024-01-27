@@ -363,7 +363,7 @@ input[type="range"].toy-range {
     accent-color: var(--range-yellow);
 }
 input[type="range"].xstore-range::-moz-range-thumb {
-    background-color: var(--range-red);
+    background-color: var(--range-purple);
 }
 input[type="range"].xstore-range {
     accent-color: var(--range-red);
