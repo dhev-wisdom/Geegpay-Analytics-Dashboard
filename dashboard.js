@@ -5,6 +5,7 @@ const all = document.getElementById("all-contain");
 const nav = document.getElementById("nav");
 const bell = document.getElementById("notification");
 const search = document.getElementById("search-icon");
+const msgBody = document.getElementById("msg-body");
 const hamburger = document.getElementById("hamburger");
 const mainSearch = document.getElementById("main-search");
 const redDiv = document.querySelectorAll(".red-div");
@@ -26,6 +27,48 @@ const invoiceForm = document.getElementById("invoice-form");
 const invoiceClose = document.getElementById("close-overlay");
 const ctx = document.getElementById('myChart');
 const bodyEl = document.body;
+
+function downloadInvoice(name, date, amount, status) {
+    const content = `Invoice for ${name}\nDate: ${date}\nAmount: $${amount}\nStatus: ${status}`;
+
+    // Create a Blob containing the file content
+    const blob = new Blob([content], { type: 'text/plain' });
+
+    // Create a link element
+    const link = document.createElement('a');
+
+    // Set the download attribute with a desired filename
+    link.download = `${name}_invoice.txt`;
+
+    // Create a URL for the Blob and set it as the href attribute
+    link.href = window.URL.createObjectURL(blob);
+
+    // Append the link to the document
+    document.body.appendChild(link);
+
+    // Trigger a click event on the link to start the download
+    link.click();
+
+    // Remove the link from the document
+    document.body.removeChild(link);
+}
+
+downloadButtons.forEach((element) => {
+    element.addEventListener("click", () => {
+        const trElement = element.closest("tr");
+        let name = trElement.dataset.name;
+        let date = trElement.dataset.date;
+        let amount = trElement.dataset.amount;
+        let status = trElement.dataset.status;
+        downloadInvoice(name, date, amount, status);
+        const myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+        msgBody.textContent = `${name} Invoice Downloaded Successfully✅`;
+        myModal.show();
+        setTimeout(() => {
+            myModal.hide();
+        }, 2500);
+    });
+});
 
 viewButtons.forEach((element) => {
     element.addEventListener("click", (el) => {
@@ -200,7 +243,8 @@ function displayMainGraph(amounts) {
                 gradient.addColorStop(0, 'rgb(5, 128, 89)');
                 gradient.addColorStop(0, 'rgb(5, 128, 89)');
                 gradient.addColorStop(0, 'rgb(5, 128, 89)');
-                gradient.addColorStop(0, 'rgb(5, 128, 89)');
+                gradient.addColorStop(0, 'rgb(9, 177, 124)');
+                gradient.addColorStop(0, 'rgb(9, 177, 124)');
                 gradient.addColorStop(1, 'rgb(255, 255, 255)');
                 return gradient;
             },

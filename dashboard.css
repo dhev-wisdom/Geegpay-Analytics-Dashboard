@@ -118,10 +118,13 @@ hr {
 .head-1 {
     font-size: 20px;
 }
-.nav-icons, .viewText, #light-mode, #dark-mode {
+.downloadIcon, #hamburger {
+    cursor: pointer;
+}
+.nav-icons, .viewText, #light-mode, #dark-mode, .downloadIcon {
     transition: transform 0.35s ease-in-out;
 }
-.nav-icons:hover, .viewText:hover, #light-mode:hover, #dark-mode:hover {
+.nav-icons:hover, .viewText:hover, #light-mode:hover, #dark-mode:hover, .downloadIcon:hover {
     transform: scale(1.15);
 }
 .head-2 {
@@ -315,8 +318,7 @@ main.dashboard-section {
 .analytics {
     background-color: lemon;
 }
-img:hover, #light-mode:hover, #dark-mode:hover, .viewText:hover, .downloadIcon:hover
-#close-overlay:hover {
+img:hover, #light-mode:hover, #dark-mode:hover, .viewText:hover, #close-overlay:hover {
     cursor: pointer;
 }
 table {
