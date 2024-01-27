@@ -36,6 +36,12 @@
 .black {
     color: #000;
 }
+.d-flex_ {
+    display: flex !important;
+}
+.d-none_ {
+    display: none !important;
+}
 .dark-background {
     background-color: #121212 !important;
 }
@@ -294,6 +300,7 @@ main.dashboard-section {
     border-radius: 10px;
     background-color: #FFF;
     padding: 15px;
+    border: 1px solid var(--light-color-grey);
 }
 .analytics {
     background-color: lemon;
@@ -384,11 +391,9 @@ input[type="range"].xstore-range {
     cursor: hover;
 }
 #invoice-overlay {
-    display: none;
     position: fixed;
     width: 100vw;
     height: 100vh;
-    /* display: flex; */
     align-items: center;
     justify-content: center;
     background-color: rgba(200, 200, 200, .1);
@@ -417,7 +422,7 @@ input[type="range"].xstore-range {
 }
 #close-overlay {
     position: absolute;
-    top: 20px;
+    top: 40px;
     right: 40px;
 }
 .hamburger {
@@ -512,6 +517,12 @@ input[type="range"].xstore-range {
     }
     .short-by {
         display: none;
+    }
+    .form-div {
+        width: 300px;
+    }
+    #close-overlay {
+        top: 50px;
     }
 }
 

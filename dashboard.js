@@ -26,7 +26,7 @@ const ctx = document.getElementById('myChart');
 const bodyEl = document.body;
 
 viewButtons.forEach((element) => {
-    element.addEventListener("click", () => {
+    element.addEventListener("click", (el) => {
         console.log("view text click");
         const trElement = element.closest("tr");
         let name = trElement.dataset.name;
@@ -37,29 +37,33 @@ viewButtons.forEach((element) => {
         invoiceForm.elements["invoice-date"].value = date;
         invoiceForm.elements["invoice-amount"].value = amount;
         invoiceForm.elements["invoice-status"].value = status;
-        invoiceOverlay.style.display = "flex";
+        invoiceOverlay.classList.add("d-flex_");
+        invoiceOverlay.classList.remove("d-none_");
+        console.log(invoiceOverlay);
     });
 });
 
-    invoiceClose.addEventListener("click", () => {
-        invoiceOverlay.style.display = "none";
-    });
+// Event listener for invoiceClose
+invoiceClose.addEventListener("click", () => {
+    invoiceOverlay.classList.add("d-none_");
+    invoiceOverlay.classList.remove("d-flex_");
+});
 
-    window.addEventListener("click", (event) => {
-        if (event.target !== invoiceForm) {
-            invoiceOverlay.style.display = "none";
-        }
-        if (nav.classList.contains("shownav") && event.target !== hamburger) {
-            nav.classList.remove("shownav");
-            hamburger.textContent = "menu";
-        }
-    });
+// Event listener for window (to close overlay on outside click)
+window.addEventListener("click", (event) => {
+    if (
+        event.target !== invoiceForm &&
+        !invoiceOverlay.classList.contains("d-none_") &&
+        event.target !== viewButtons
+    ) {
+        invoiceOverlay.classList.add("d-none_");
+        invoiceOverlay.classList.remove("d-flex_");
+    }
+});
 
-if (sessionStorage.getItem("darkOrLightMode") === "dark") darkModeBtn.click();
-
-
+// Event listener for hamburger
 hamburger.addEventListener("click", () => {
-    console.log("hamburge")
+    console.log("hamburger clicked");
     nav.classList.toggle("shownav");
     if (hamburger.textContent === "menu") {
         hamburger.textContent = "close";
@@ -69,6 +73,7 @@ hamburger.addEventListener("click", () => {
 });
 
 darkModeBtn.addEventListener("click", () => {
+    console.log("darkmode btn clicked");
     sessionStorage.setItem("darkOrLightMode", "dark");
     all.classList.add("dark-background");
     bodyEl.classList.add("dark-background");
@@ -130,6 +135,12 @@ lightModeBtn.addEventListener("click", () => {
     nav.classList.remove("theme-light-background");
 });
 
+if (sessionStorage.getItem("darkOrLightMode").trim() == "dark") {
+    console.log("Check: ", sessionStorage.getItem("darkOrLightMode"));
+    const clickEvent = new Event("click");
+    darkModeBtn.dispatchEvent(clickEvent);
+}
+
 platformRange.forEach((element, index) => {
     const amount = platformAmount[index];
     element.addEventListener("change", (event) => {
@@ -157,13 +168,6 @@ function displayMainGraph(amounts) {
             data: amounts,
             borderWidth: 1,
             borderRadius: 50,
-            // backgroundColor: (context) => {const lightModeBtn = document.getElementById("light-mode");
-            // const index = context.dataIndex;
-            // const data = context.dataset.data;
-            // context.dataset.barPercentage = .85;
-            // if (index === data.length - 7) return 'rgb(91, 206, 170)';
-            // else return 'rgb(235, 250, 246)';
-            // },
             backgroundColor: "rgb(235, 250, 246)",
             // hoverBackgroundColor: "linear-gradient(to top, rgb(235, 250, 246), rgb(91, 206, 170))",
             hoverBackgroundColor: "rgb(91, 206, 170)",
@@ -184,7 +188,7 @@ function displayMainGraph(amounts) {
 function hideLoadingOverlay() {
     document.getElementById('loadingOverlay').style.display = 'none';
 }
-// setTimeout(() => {
-//     hideLoadingOverlay();
-// }, 1000);
-hideLoadingOverlay();
+setTimeout(() => {
+    hideLoadingOverlay();
+}, 1000);
+// hideLoadingOverlay();
